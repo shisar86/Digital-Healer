@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta tags  -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+
+    <title>LDM</title>
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+
+    <!-- CSS Assets -->
+    <link rel="stylesheet" href="css/app.css" />
+
+    <!-- Javascript Assets -->
+    <script src="js/app.js" defer></script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      /**
+       * THIS SCRIPT REQUIRED FOR PREVENT FLICKERING IN SOME BROWSERS
+       */
+      localStorage.getItem("_x_darkMode_on") === "true" &&
+        document.documentElement.classList.add("dark");
+    </script>
+  </head>
+
+  <body
+    x-data
+    x-bind="$store.global.documentBody"
+    class="is-header-blur navigation:horizontal"
+  >
+    <!-- Page Wrapper -->
+    <div
+      id="root"
+      class="min-h-100vh flex grow bg-slate-50 dark:bg-navy-900"
+      x-cloak
+    >
+      <!-- App Header Wrapper-->
+      <nav class="header print:hidden">
+        <!-- App Header  -->
+        <div
+          style="padding-left: 10px; padding-right: 10px"
+          class="header-container relative flex w-full bg-white dark:bg-navy-700 print:hidden sm:flex-col"
+        >
+          <!-- Header Items -->
+          <div
+            style="-webkit-app-region: drag"
+            class="flex w-full items-center justify-between sm:h-16"
+          >
+            <div class="hidden items-center space-x-2 sm:flex">
+              <a>
+                <img
+                  x-show="$store.global.isDarkModeEnabled"
+                  class="h-10 w-10 transition-transform duration-500 ease-in-out hover:rotate-[360deg]"
+                  src="images/app-logo.svg"
+                  alt="logo"
+                />
+                <img
+                  x-show="!$store.global.isDarkModeEnabled"
+                  class="h-10 w-10 transition-transform duration-500 ease-in-out hover:rotate-[360deg]"
+                  src="images/app-logo-light.svg"
+                  alt="logo"
+                />
+              </a>
+              <span
+                class="text-xl font-semibold uppercase text-slate-700 dark:text-navy-100"
+              >
+                Digital Healer
+              </span>
+            </div>
+
+            <!-- Right: Header buttons -->
+            <div
+              style="-webkit-app-region: no-drag"
+              class="-mr-1.5 flex items-center space-x-2"
+            >
+              <!-- dark -->
+              <button
+                @click="$store.global.isDarkModeEnabled = !$store.global.isDarkModeEnabled"
+                class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
+              >
+                <svg
+                  x-show="$store.global.isDarkModeEnabled"
+                  x-transition:enter="transition-transform duration-200 ease-out absolute origin-top"
+                  x-transition:enter-start="scale-75"
+                  x-transition:enter-end="scale-100 static"
+                  class="h-6 w-6 text-amber-400"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M11.75 3.412a.818.818 0 01-.07.917 6.332 6.332 0 00-1.4 3.971c0 3.564 2.98 6.494 6.706 6.494a6.86 6.86 0 002.856-.617.818.818 0 011.1 1.047C19.593 18.614 16.218 21 12.283 21 7.18 21 3 16.973 3 11.956c0-4.563 3.46-8.31 7.925-8.948a.818.818 0 01.826.404z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  x-show="!$store.global.isDarkModeEnabled"
+                  x-transition:enter="transition-transform duration-200 ease-out absolute origin-top"
+                  x-transition:enter-start="scale-75"
+                  x-transition:enter-end="scale-100 static"
+                  class="h-6 w-6 text-amber-400"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+              <!-- minimize -->
+              <button
+                id="minimize"
+                class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
+              >
+                <div class="avatar h-8 w-8">
+                  <div
+                    class="is-initial mask is-squircle bg-warning text-base uppercase text-white"
+                  ></div>
+                </div>
+              </button>
+              <!-- close -->
+              <button
+                id="close"
+                x-ref="popperRef"
+                class="btn relative h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
+              >
+                <div class="avatar h-8 w-8">
+                  <div
+                    class="is-initial mask is-squircle bg-error text-base uppercase text-white"
+                  ></div>
+                </div>
+              </button>
+            </div>
+          </div>
+          <div
+            class="h-px mx-0 bg-slate-200 dark:bg-navy-500"
+            style="padding-left: 1px"
+          ></div>
+          <!-- Header Navigation -->
+        </div>
+      </nav>
+      <main
+        class="main-content w-full flex flex-col h-screen justify-center items-center"
+      >
+        <div
+          class="grid mx-4 max-w-4xl grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6"
+        >
+          <div
+            class="rounded-lg bg-gradient-to-br from-amber-400 to-orange-600 py-6 px-5 text-center"
+          >
+            <h4 class="text-xl font-semibold text-white">Recover Data</h4>
+            <br />
+            <button
+              id="scan"
+              onclick="window.location.href='Recover.html'"
+              class="btn w-full border border-white/10 bg-white/20 text-white hover:bg-white/30 focus:bg-white/30"
+            >
+              Scan Now
+            </button>
+          </div>
+          <div
+            class="rounded-lg bg-gradient-to-br from-pink-500 to-rose-500 py-6 px-5 text-center"
+          >
+            <h4 class="text-xl font-semibold text-white">Show Recovered</h4>
+            <br />
+            <button
+              onclick="window.location.href='Recovered.html'"
+              class="btn w-full border border-white/10 bg-white/20 text-white hover:bg-white/30 focus:bg-white/30"
+            >
+              Open
+            </button>
+          </div>
+          <div
+            class="rounded-lg bg-gradient-to-br from-purple-500 to-indigo-600 py-6 px-5 text-center"
+          >
+            <h4 class="text-xl font-semibold text-white">Shred Files</h4>
+            <br />
+            <button
+              onclick="window.location.href='About.html'"
+              class="btn w-full border border-white/10 bg-white/20 text-white hover:bg-white/30 focus:bg-white/30"
+            >
+              Delete Permanenetly
+            </button>
+          </div>
+          <div
+            class="rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 py-6 px-5 text-center"
+          >
+            <h4 class="text-xl font-semibold text-white">About Us</h4>
+            <br />
+            <button
+              onclick="window.location.href='About.html'"
+              class="btn w-full border border-white/10 bg-white/20 text-white hover:bg-white/30 focus:bg-white/30"
+            >
+              Contact
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+    <!-- 
+        This is a place for Alpine.js Teleport feature 
+        @see https://alpinejs.dev/directives/teleport
+      -->
+
+    <script>
+      window.addEventListener("DOMContentLoaded", () => Alpine.start());
+    </script>
+    <script src="renderer.js"></script>
+  </body>
+</html>

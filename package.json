@@ -1,0 +1,38 @@
+{
+  "dependencies": {
+    "easydl": "^1.0.3",
+    "electron-squirrel-startup": "^1.0.0",
+    "node-disk-info": "^1.3.0",
+    "node-powershell": "^5.0.1",
+    "node-windows": "^1.0.0-beta.8",
+    "path": "^0.12.7",
+    "url": "^0.11.0",
+    "url-file-size": "^1.0.5-1",
+    "yarn": "^1.22.19"
+  },
+  "name": "DataHealer",
+  "version": "1.0.0",
+  "description": "Recovery Agent",
+  "main": "main.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@electron-forge/cli": "^6.1.1",
+    "@electron-forge/maker-deb": "^6.1.1",
+    "@electron-forge/maker-rpm": "^6.1.1",
+    "@electron-forge/maker-squirrel": "^6.1.1",
+    "@electron-forge/maker-zip": "^6.1.1",
+    "electron": "^22.0.2",
+    "electron-packager": "^17.1.1"
+  },
+  "scripts": {
+    "start-admin": "runas /user:\"JAYAPRAKASH M\" \"electron .\"",
+    "start": "electron .",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "build": {
+    "win": {
+      "requestedExecutionLevel": "highestAvailable"
+    }
+  }
+}
